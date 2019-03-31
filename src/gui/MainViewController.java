@@ -3,6 +3,7 @@ package gui;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
+import java.util.function.Consumer;
 
 import application.Main;
 import gui.util.Alerts;
@@ -32,12 +33,15 @@ public class MainViewController implements Initializable{
 	
 	@FXML
 	public void onMenuItemDepartamentoAction() {
-		loadView2("/gui/ListaDepartamento.fxml");
+		loadView("/gui/ListaDepartamento.fxml", (DepartamentoController controller) -> {
+			controller.setDepartamentoService(new DepartamentoService());
+			controller.updateTableView();
+		});
 	}
 	
 	@FXML
 	public void onMenuItemAboutAction() {
-		loadView("/gui/About.fxml");
+		loadView("/gui/About.fxml", x ->{});
 	}
 	
 	@Override
@@ -46,26 +50,7 @@ public class MainViewController implements Initializable{
 		
 	}
 	
-	private void loadView (String nomeCaminho) {
-		try {
-			FXMLLoader loader = new FXMLLoader(getClass().getResource(nomeCaminho));
-			VBox newVBox = loader.load();
-			
-			Scene mainScene = Main.getMainScene();
-			// getRoot pega o primeiro elemento da view
-			VBox mainVBox = (VBox)((ScrollPane) mainScene.getRoot()).getContent();
-			
-			Node mainMenu = mainVBox.getChildren().get(0);
-			mainVBox.getChildren().clear();
-			mainVBox.getChildren().add(mainMenu);
-			mainVBox.getChildren().addAll(newVBox);
-		}		
-		catch (IOException e) {
-			Alerts.showAlert("IO Exception", "Erro ao carregar a página", e.getMessage(), AlertType.ERROR);
-		}
-	}
-	
-	private void loadView2 (String nomeCaminho) {
+	private <T> void loadView (String nomeCaminho, Consumer<T> inicializacao) {
 		try {
 			FXMLLoader loader = new FXMLLoader(getClass().getResource(nomeCaminho));
 			VBox newVBox = loader.load();
@@ -79,13 +64,12 @@ public class MainViewController implements Initializable{
 			mainVBox.getChildren().add(mainMenu);
 			mainVBox.getChildren().addAll(newVBox);
 			
-			DepartamentoController controller = loader.getController();
-			controller.setDepartamentoService(new DepartamentoService());
-			controller.updateTableView();
-			
+			T controller = loader.getController();
+			inicializacao.accept(controller);
 		}		
 		catch (IOException e) {
 			Alerts.showAlert("IO Exception", "Erro ao carregar a página", e.getMessage(), AlertType.ERROR);
 		}
 	}
+
 }
