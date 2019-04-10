@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox prefHeight="381.0" prefWidth="604.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.DepartamentoController">
+<VBox prefHeight="381.0" prefWidth="604.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.DepartmentController">
    <children>
       <Label prefHeight="26.0" prefWidth="154.0" text="Departamentos">
          <font>
@@ -21,13 +21,13 @@
       </Label>
       <ToolBar prefHeight="40.0" prefWidth="200.0">
         <items>
-          <Button fx:id="btNovoDepartamento" mnemonicParsing="false" onAction="#onBtNovoDepartamento" text="Novo Departamento" />
+          <Button fx:id="btNovoDepartamento" mnemonicParsing="false" onAction="#onBtNovoDepartment" text="Novo Departamento" />
         </items>
          <VBox.margin>
             <Insets top="10.0" />
          </VBox.margin>
       </ToolBar>
-      <TableView fx:id="tableViewDepartamento" prefHeight="327.0" prefWidth="633.0">
+      <TableView fx:id="tableViewDepartment" prefHeight="327.0" prefWidth="633.0">
         <columns>
           <TableColumn fx:id="tableColumnId" prefWidth="49.0" text="ID" />
           <TableColumn fx:id="tableColumnName" prefWidth="236.0" text="DEPARTAMENTO" />

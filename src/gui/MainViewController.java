@@ -16,7 +16,7 @@ import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.VBox;
-import model.services.DepartamentoService;
+import model.services.DepartmentService;
 
 public class MainViewController implements Initializable{
 	@FXML
@@ -33,8 +33,8 @@ public class MainViewController implements Initializable{
 	
 	@FXML
 	public void onMenuItemDepartamentoAction() {
-		loadView("/gui/ListaDepartamento.fxml", (DepartamentoController controller) -> {
-			controller.setDepartamentoService(new DepartamentoService());
+		loadView("/gui/ListaDepartamento.fxml", (DepartmentController controller) -> {
+			controller.setDepartmentService(new DepartmentService());
 			controller.updateTableView();
 		});
 	}
@@ -69,6 +69,7 @@ public class MainViewController implements Initializable{
 		}		
 		catch (IOException e) {
 			Alerts.showAlert("IO Exception", "Erro ao carregar a página", e.getMessage(), AlertType.ERROR);
+			e.printStackTrace();
 		}
 	}
 
