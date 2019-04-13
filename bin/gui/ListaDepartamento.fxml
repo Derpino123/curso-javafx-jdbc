@@ -31,6 +31,7 @@
         <columns>
           <TableColumn fx:id="tableColumnId" prefWidth="49.0" text="ID" />
           <TableColumn fx:id="tableColumnName" prefWidth="236.0" text="DEPARTAMENTO" />
+            <TableColumn fx:id="tableColumnEdit" prefWidth="75.0" />
         </columns>
       </TableView>
    </children>
