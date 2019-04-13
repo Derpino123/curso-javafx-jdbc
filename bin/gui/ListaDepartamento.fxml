@@ -30,8 +30,9 @@
       <TableView fx:id="tableViewDepartment" prefHeight="327.0" prefWidth="633.0">
         <columns>
           <TableColumn fx:id="tableColumnId" prefWidth="49.0" text="ID" />
-          <TableColumn fx:id="tableColumnName" prefWidth="236.0" text="DEPARTAMENTO" />
-            <TableColumn fx:id="tableColumnEdit" prefWidth="75.0" />
+          <TableColumn fx:id="tableColumnName" prefWidth="303.0" text="DEPARTAMENTO" />
+            <TableColumn fx:id="tableColumnEdit" prefWidth="79.0" />
+            <TableColumn fx:id="tableColumnRemove" prefWidth="90.0" />
         </columns>
       </TableView>
    </children>
